@@ -26,14 +26,13 @@ import lldb
 
     #return args
 
-
 def write_to_file(filename, command, output):
     """Write the output to the given file, headed by the command"""
     f = open(filename, 'w')
 
     f.write("(lldb) " + command + '\n\n')
-    f.write(output)
-
+    output.PutOutput(f);
+    f.flush();
 
 def handle_call(debugger, raw_args, result, internal_dict):
     """Receives and handles the call to write from lldb"""
@@ -56,12 +55,16 @@ def handle_call(debugger, raw_args, result, internal_dict):
     interpreter.HandleCommand(command, res)
 
     # Get the output even
-    output = res.GetOutput() or res.GetError()
+    
+    if !res.Succeeded():
+        print(res.GetError(), end='');
+        return;
+    
     if show_output:
+        output = res.GetOutput()
         print(output, end='');
     
-    write_to_file(filename, command, output)
-
+    write_to_file(filename, command, res)
 
 def __lldb_init_module(debugger, internal_dict):
     """Initialise the write command within lldb"""
