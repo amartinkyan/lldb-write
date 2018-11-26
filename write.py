@@ -40,8 +40,7 @@ def handle_call(debugger, raw_args, result, internal_dict):
     #args = parse_args(raw_args)
     args = raw_args.split();
     filename = args.pop(0);
-    del args[0];
-    command = ' '.join(args);
+    command = ' '.join(args[1:]);
     
     print('Args: ' + ' '.join(args));
     print('filename: ' + filename);
