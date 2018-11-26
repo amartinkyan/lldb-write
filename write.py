@@ -31,8 +31,9 @@ def write_to_file(filename, command, output):
     f = open(filename, 'w')
 
     f.write("(lldb) " + command + '\n\n')
-    output.PutOutput(f);
     f.flush();
+    output.PutOutput(f);
+    output.flush();
 
 def handle_call(debugger, raw_args, result, internal_dict):
     """Receives and handles the call to write from lldb"""
