@@ -28,7 +28,7 @@ import lldb
 
 def write_to_file(filename, command, output):
     """Write the output to the given file, headed by the command"""
-    with open(filename, 'w') as f
+    with open(filename, 'w') as f:
         f.write("(lldb) " + command + '\n\n')
         f.flush();
         output.PutOutput(f);
