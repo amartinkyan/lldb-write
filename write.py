@@ -43,7 +43,7 @@ def handle_call(debugger, raw_args, result, internal_dict):
     del args[0];
     command = ' '.join(args);
     
-    print('Args: ' + args);
+    print('Args: ' + *args);
     print('filename: ' + filname);
     print('command: ' + command);
     # Run the command and store the result
