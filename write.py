@@ -57,7 +57,7 @@ def handle_call(debugger, raw_args, result, internal_dict):
     # Run the command and store the result
     res = lldb.SBCommandReturnObject()
     with open(filename, 'w') as f:
-        res.SetImmediateOutputFile();
+        res.SetImmediateOutputFile(f);
         interpreter = lldb.debugger.GetCommandInterpreter()
         interpreter.HandleCommand(command, res)
 
