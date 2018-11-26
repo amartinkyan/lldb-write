@@ -28,12 +28,11 @@ import lldb
 
 def write_to_file(filename, command, output):
     """Write the output to the given file, headed by the command"""
-    f = open(filename, 'w')
-
-    f.write("(lldb) " + command + '\n\n')
-    f.flush();
-    output.PutOutput(f);
-    output.flush();
+    with open(filename, 'w') as f
+        f.write("(lldb) " + command + '\n\n')
+        f.flush();
+        output.PutOutput(f);
+        output.flush();
 
 def handle_call(debugger, raw_args, result, internal_dict):
     """Receives and handles the call to write from lldb"""
