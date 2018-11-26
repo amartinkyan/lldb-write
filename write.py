@@ -44,7 +44,7 @@ def handle_call(debugger, raw_args, result, internal_dict):
     command = ' '.join(args);
     
     print('Args: ' + ' '.join(args));
-    print('filename: ' + filname);
+    print('filename: ' + filename);
     print('command: ' + command);
     # Run the command and store the result
     res = lldb.SBCommandReturnObject()
