@@ -56,7 +56,7 @@ def handle_call(debugger, raw_args, result, internal_dict):
 
     # Get the output even
     
-    if !res.Succeeded():
+    if not (res.Succeeded()):
         print(res.GetError(), end='');
         return;
     
