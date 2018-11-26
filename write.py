@@ -56,8 +56,10 @@ def handle_call(debugger, raw_args, result, internal_dict):
     print('command: ' + command);
     # Run the command and store the result
     res = lldb.SBCommandReturnObject()
-    interpreter = lldb.debugger.GetCommandInterpreter()
-    interpreter.HandleCommand(command, res)
+    with open(filename, 'w') as f:
+        res.SetImmediateOutputFile();
+        interpreter = lldb.debugger.GetCommandInterpreter()
+        interpreter.HandleCommand(command, res)
 
     # Get the output even
     
@@ -69,7 +71,7 @@ def handle_call(debugger, raw_args, result, internal_dict):
         output = res.GetOutput()
         print(output, end='');
     
-    write_to_file(filename, command, res)
+    #write_to_file(filename, command, res)
 
 def __lldb_init_module(debugger, internal_dict):
     """Initialise the write command within lldb"""
