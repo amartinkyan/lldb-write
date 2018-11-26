@@ -4,7 +4,7 @@ import lldb
 
 
 #def parse_args(raw_args):
-    """Parse the arguments given to write"""
+    #"""Parse the arguments given to write"""
     # Need to provide 'prog' (name of program) here otherwise
     # argparse tries to get it from sys.argv[0], which breaks
     # when called in lldb.
