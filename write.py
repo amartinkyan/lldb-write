@@ -44,6 +44,7 @@ def handle_call(debugger, raw_args, result, internal_dict):
     filename = args.pop(0);
     if args[0] == '-h':
         show_output = False;
+        args.pop(0);
     command = ' '.join(args);
     
     print('Args: ' + ' '.join(args));
