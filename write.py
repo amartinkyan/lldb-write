@@ -38,8 +38,12 @@ def write_to_file(filename, command, output):
 def handle_call(debugger, raw_args, result, internal_dict):
     """Receives and handles the call to write from lldb"""
     #args = parse_args(raw_args)
+    show_output = True;
     args = raw_args.split();
+    
     filename = args.pop(0);
+    if args[0] == '-h':
+        show_output = False;
     command = ' '.join(args);
     
     print('Args: ' + ' '.join(args));
@@ -52,7 +56,9 @@ def handle_call(debugger, raw_args, result, internal_dict):
 
     # Get the output even
     output = res.GetOutput() or res.GetError()
-    print(output, end='')
+    if show_output:
+        print(output, end='');
+    
     write_to_file(filename, command, output)
 
 
